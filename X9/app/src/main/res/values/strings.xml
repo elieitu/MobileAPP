@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="app_name">X9</string>
+    <string name="submit">Submit</string>
+
+    <string name="report_title_label">Report Title</string>
+    <string name="report_location_label">Report location</string>
+    <string name="report_date_label">Report date</string>
+    <string name="report_type_label">Report type</string>
+    <string name="report_description_label">Report description</string>
+
+    <string name="severity_minor">Minor</string>
+    <string name="severity_moderate">Moderate</string>
+    <string name="severity_major">Major</string>
+
+    <string name="open_traffic_report_screen">Open Traffic Report Screen</string>
+    <string name="report_severity_label">Severity</string>
+    <string name="create_traffic_report">Create Traffic Report</string>
+
+
+    <string-array name="severity_options">
+        <item>@string/severity_minor</item>
+        <item>@string/severity_moderate</item>
+        <item>@string/severity_major</item>
+    </string-array>
+
+</resources>
