@@ -1,0 +1,17 @@
+<resources>
+
+    <string-array name="severity_options">
+        <item>Minor</item>
+        <item>Moderate</item>
+        <item>Major</item>
+    </string-array>
+
+    <string-array name="report_type_options">
+        <item>Accident</item>
+        <item>Roadwork</item>
+        <item>Hazard</item>
+        <item>Traffic jam</item>
+        <item>Other</item>
+    </string-array>
+
+</resources>

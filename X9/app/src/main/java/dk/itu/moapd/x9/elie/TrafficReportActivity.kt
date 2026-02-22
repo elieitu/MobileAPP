@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 
@@ -16,7 +17,7 @@ class TrafficReportActivity : AppCompatActivity() {
         const val EXTRA_DESCRIPTION = "dk.itu.moapd.x9.elie.EXTRA_DESCRIPTION"
         const val EXTRA_SEVERITY = "dk.itu.moapd.x9.elie.EXTRA_SEVERITY"
 
-        private const val TAG = "X9_LIFECYCLE_REPORT"
+        private const val TAG = "X9_TRAFFIC_REPORT"
         private const val STATE_TYPE = "state_type"
         private const val STATE_DESCRIPTION = "state_description"
         private const val STATE_SEVERITY = "state_severity"
@@ -61,12 +62,21 @@ class TrafficReportActivity : AppCompatActivity() {
             if (type.isEmpty()) { typeInput.error = "Required"; valid = false } else typeInput.error = null
             if (description.isEmpty()) { descriptionInput.error = "Required"; valid = false } else descriptionInput.error = null
             if (severity.isEmpty()) { severityDropdown.error = "Required"; valid = false } else severityDropdown.error = null
-            if (!valid) return@setOnClickListener
 
-            val data = Intent()
-            data.putExtra(EXTRA_TYPE, type)
-            data.putExtra(EXTRA_DESCRIPTION, description)
-            data.putExtra(EXTRA_SEVERITY, severity)
+            if (!valid) {
+                Log.w(TAG, "Invalid submission: typeEmpty=${type.isEmpty()}, descEmpty=${description.isEmpty()}, severityEmpty=${severity.isEmpty()}")
+                Toast.makeText(this, "Invalid submission: udfyld alle felter", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Summary log (requirement)
+            Log.i(TAG, "TrafficReport summary: type='$type', severity='$severity', descriptionLen=${description.length}")
+
+            val data = Intent().apply {
+                putExtra(EXTRA_TYPE, type)
+                putExtra(EXTRA_DESCRIPTION, description)
+                putExtra(EXTRA_SEVERITY, severity)
+            }
 
             setResult(RESULT_OK, data)
             finish()
