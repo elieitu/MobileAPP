@@ -5,20 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.Chip
 import dk.itu.moapd.x9.elie.R
-import dk.itu.moapd.x9.elie.TrafficReport
+import dk.itu.moapd.x9.elie.data.TrafficReport
 
 class TrafficReportAdapter(
-    private val reports: MutableList<TrafficReport>
+    private val items: MutableList<TrafficReport>
 ) : RecyclerView.Adapter<TrafficReportAdapter.ReportViewHolder>() {
 
-    class ReportViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.textTitle)
-        val type: TextView = itemView.findViewById(R.id.textType)
-        val meta: TextView = itemView.findViewById(R.id.textMeta)
-        val description: TextView = itemView.findViewById(R.id.textDescription)
-        val severity: Chip = itemView.findViewById(R.id.chipSeverity)
+    class ReportViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val title: TextView = view.findViewById(R.id.itemTitle)
+        val meta: TextView = view.findViewById(R.id.itemMeta)
+        val description: TextView = view.findViewById(R.id.itemDescription)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportViewHolder {
@@ -28,19 +25,11 @@ class TrafficReportAdapter(
     }
 
     override fun onBindViewHolder(holder: ReportViewHolder, position: Int) {
-        val report = reports[position]
-
+        val report = items[position]
         holder.title.text = report.title
-        holder.type.text = report.type
+        holder.meta.text = "${report.location} | ${report.date} | ${report.type} | ${report.severity}"
         holder.description.text = report.description
-        holder.severity.text = report.severity
-        holder.meta.text = "${report.location} | ${report.date}"
     }
 
-    override fun getItemCount(): Int = reports.size
-
-    fun addReport(report: TrafficReport) {
-        reports.add(0, report)
-        notifyItemInserted(0)
-    }
+    override fun getItemCount(): Int = items.size
 }

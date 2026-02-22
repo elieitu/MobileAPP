@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import dk.itu.moapd.x9.elie.R
-import dk.itu.moapd.x9.elie.TrafficReport
+import dk.itu.moapd.x9.elie.data.TrafficReport
 import dk.itu.moapd.x9.elie.adapter.TrafficReportAdapter
 import dk.itu.moapd.x9.elie.viewmodel.TrafficReportViewModel
 import dk.itu.moapd.x9.elie.util.UiPickers
