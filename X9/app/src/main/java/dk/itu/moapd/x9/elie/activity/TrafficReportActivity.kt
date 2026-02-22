@@ -1,4 +1,4 @@
-package dk.itu.moapd.x9.elie
+package dk.itu.moapd.x9.elie.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+import dk.itu.moapd.x9.elie.R
 
 class TrafficReportActivity : AppCompatActivity() {
 

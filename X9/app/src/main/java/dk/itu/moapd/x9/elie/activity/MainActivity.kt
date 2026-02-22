@@ -1,9 +1,11 @@
-package dk.itu.moapd.x9.elie
+package dk.itu.moapd.x9.elie.activity
 
 import android.content.Intent
 import android.os.Bundle
-import dk.itu.moapd.x9.elie.R
 import androidx.appcompat.app.AppCompatActivity
+import dk.itu.moapd.x9.elie.fragment.MainFragment
+import dk.itu.moapd.x9.elie.R
+import dk.itu.moapd.x9.elie.activity.TrafficReportActivity
 
 class MainActivity : AppCompatActivity(), MainFragment.Callbacks {
 
@@ -13,7 +15,7 @@ class MainActivity : AppCompatActivity(), MainFragment.Callbacks {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, MainFragment.newInstance())
+                .replace(R.id.fragment_container, MainFragment.Companion.newInstance())
                 .commit()
         }
     }

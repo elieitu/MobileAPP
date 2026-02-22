@@ -1,5 +1,6 @@
-package dk.itu.moapd.x9.elie
+package dk.itu.moapd.x9.elie.util
 
+import android.R
 import android.app.DatePickerDialog
 import android.content.Context
 import android.widget.ArrayAdapter
@@ -14,12 +15,12 @@ object UiPickers {
         context: Context,
         input: TextInputEditText,
         format: (year: Int, month: Int, day: Int) -> String = { y, m, d ->
-            val mm = String.format(Locale.US, "%02d", m + 1)
-            val dd = String.format(Locale.US, "%02d", d)
+            val mm = String.Companion.format(Locale.US, "%02d", m + 1)
+            val dd = String.Companion.format(Locale.US, "%02d", d)
             "$y-$mm-$dd"
         }
     ) {
-        // Make it behave like a picker field, not a typing field
+
         input.isFocusable = false
         input.isClickable = true
         input.inputType = 0
@@ -43,7 +44,7 @@ object UiPickers {
         input: MaterialAutoCompleteTextView,
         items: List<String>
     ) {
-        val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, items)
+        val adapter = ArrayAdapter(context, R.layout.simple_list_item_1, items)
         input.setAdapter(adapter)
         input.setOnClickListener { input.showDropDown() }
         input.inputType = 0

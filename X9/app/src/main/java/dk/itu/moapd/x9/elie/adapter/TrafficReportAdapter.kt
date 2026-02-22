@@ -1,10 +1,12 @@
-package dk.itu.moapd.x9.elie
+package dk.itu.moapd.x9.elie.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import dk.itu.moapd.x9.elie.R
+import dk.itu.moapd.x9.elie.data.TrafficReport
 
 class TrafficReportAdapter(
     private val items: MutableList<TrafficReport>

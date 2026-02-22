@@ -1,4 +1,4 @@
-package dk.itu.moapd.x9.elie
+package dk.itu.moapd.x9.elie.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
+import dk.itu.moapd.x9.elie.R
 
 class CreateReportFragment : Fragment() {
 
