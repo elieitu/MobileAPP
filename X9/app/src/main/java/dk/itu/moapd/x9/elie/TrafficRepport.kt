@@ -1,4 +1,4 @@
-package dk.itu.moapd.x9.elie.data
+package dk.itu.moapd.x9.elie
 
 data class TrafficReport(
     val title: String,

@@ -3,7 +3,7 @@ package dk.itu.moapd.x9.elie.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import dk.itu.moapd.x9.elie.data.TrafficReport
+import dk.itu.moapd.x9.elie.TrafficReport
 
 class TrafficReportViewModel : ViewModel() {
 
