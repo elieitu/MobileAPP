@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
@@ -19,14 +18,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.clickable
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenu
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
@@ -88,7 +87,7 @@ private fun MainScreen(viewModel: TrafficReportViewModel) {
         val severity = data.getStringExtra(TrafficReportActivity.EXTRA_SEVERITY).orEmpty()
         if (severity.isNotEmpty()) {
             Toast.makeText(context, "Report received: $severity", Toast.LENGTH_SHORT).show()
-            Log.i("X9_MAIN_COMPOSE", "Returned report: type='$type', severity='$severity'")
+            Log.i(TAG, "Returned report: type='$type', severity='$severity'")
         }
     }
 
@@ -96,8 +95,7 @@ private fun MainScreen(viewModel: TrafficReportViewModel) {
         viewModel.addMockDataIfEmpty()
     }
 
-    val openDatePicker = remember(context) {
-        {
+    val openDatePicker = {
         val cal = Calendar.getInstance()
         DatePickerDialog(
             context,
@@ -110,7 +108,6 @@ private fun MainScreen(viewModel: TrafficReportViewModel) {
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH)
         ).show()
-        }
     }
 
     Column(
@@ -142,13 +139,14 @@ private fun MainScreen(viewModel: TrafficReportViewModel) {
         OutlinedTextField(
             value = date,
             onValueChange = {},
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { openDatePicker() },
+            modifier = Modifier.fillMaxWidth(),
             label = { Text("Report date") },
             readOnly = true,
             singleLine = true
         )
+        Button(onClick = openDatePicker, modifier = Modifier.fillMaxWidth()) {
+            Text("Pick date")
+        }
 
         ExposedDropdownMenuBox(
             expanded = expandedType,
@@ -166,7 +164,7 @@ private fun MainScreen(viewModel: TrafficReportViewModel) {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedType)
                 }
             )
-            DropdownMenu(
+            ExposedDropdownMenu(
                 expanded = expandedType,
                 onDismissRequest = { expandedType = false }
             ) {
@@ -206,10 +204,7 @@ private fun MainScreen(viewModel: TrafficReportViewModel) {
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            itemsIndexed(
-                items = reports,
-                key = { _, report -> report.hashCode() }
-            ) { index, report ->
+            itemsIndexed(reports) { index, report ->
                 ReportCard(
                     report = report,
                     onDelete = { viewModel.removeAt(index) }

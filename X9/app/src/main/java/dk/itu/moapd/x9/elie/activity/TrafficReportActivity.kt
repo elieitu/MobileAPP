@@ -6,16 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenu
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
@@ -116,7 +115,7 @@ private fun TrafficReportScreen(onSubmit: (String, String, String) -> Unit) {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                 }
             )
-            DropdownMenu(
+            ExposedDropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {
@@ -138,11 +137,11 @@ private fun TrafficReportScreen(onSubmit: (String, String, String) -> Unit) {
                 val safeDescription = description.trim()
                 val safeSeverity = severity.trim()
                 if (safeType.isEmpty() || safeDescription.isEmpty() || safeSeverity.isEmpty()) {
-                    Log.w("X9_TRAFFIC_REPORT", "Invalid submission: typeEmpty=${safeType.isEmpty()}, descEmpty=${safeDescription.isEmpty()}, severityEmpty=${safeSeverity.isEmpty()}")
+                    Log.w(TAG, "Invalid submission: typeEmpty=${safeType.isEmpty()}, descEmpty=${safeDescription.isEmpty()}, severityEmpty=${safeSeverity.isEmpty()}")
                     Toast.makeText(context, "Invalid submission: udfyld alle felter", Toast.LENGTH_SHORT).show()
                     return@Button
                 }
-                Log.i("X9_TRAFFIC_REPORT", "TrafficReport summary: type='$safeType', severity='$safeSeverity', descriptionLen=${safeDescription.length}")
+                Log.i(TAG, "TrafficReport summary: type='$safeType', severity='$safeSeverity', descriptionLen=${safeDescription.length}")
                 onSubmit(safeType, safeDescription, safeSeverity)
             },
             modifier = Modifier.fillMaxWidth()
