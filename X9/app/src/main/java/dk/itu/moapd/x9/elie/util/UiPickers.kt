@@ -2,6 +2,7 @@ package dk.itu.moapd.x9.elie.util
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.view.MotionEvent
 import android.widget.ArrayAdapter
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
@@ -19,22 +20,37 @@ object UiPickers {
             "$y-$mm-$dd"
         }
     ) {
-
-        input.isFocusable = false
-        input.isClickable = true
-        input.inputType = 0
-
-        input.setOnClickListener {
+        fun showPicker() {
             val cal = Calendar.getInstance()
             DatePickerDialog(
                 context,
                 { _, y, m, d ->
                     input.setText(format(y, m, d))
+                    input.error = null
                 },
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             ).show()
+        }
+
+        input.isFocusable = false
+        input.isFocusableInTouchMode = false
+        input.isClickable = true
+        input.isLongClickable = false
+        input.isCursorVisible = false
+        input.inputType = 0
+
+        input.setOnClickListener { showPicker() }
+        input.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) showPicker()
+        }
+        input.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                showPicker()
+                return@setOnTouchListener true
+            }
+            false
         }
     }
 

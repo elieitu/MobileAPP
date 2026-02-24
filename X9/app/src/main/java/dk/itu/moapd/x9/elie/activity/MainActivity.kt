@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
         if (result.resultCode != RESULT_OK) return@registerForActivityResult
 
         val type = data.getStringExtra(TrafficReportActivity.EXTRA_TYPE).orEmpty().trim()
+        val date = data.getStringExtra(TrafficReportActivity.EXTRA_DATE).orEmpty().trim()
         val description = data.getStringExtra(TrafficReportActivity.EXTRA_DESCRIPTION).orEmpty().trim()
         val severity = data.getStringExtra(TrafficReportActivity.EXTRA_SEVERITY).orEmpty().trim()
         if (type.isEmpty() || description.isEmpty() || severity.isEmpty()) return@registerForActivityResult
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
             TrafficReport(
                 title = "XML report",
                 location = "From XML screen",
-                date = LocalDate.now().toString(),
+                date = if (date.isNotEmpty()) date else LocalDate.now().toString(),
                 type = type,
                 severity = severity,
                 description = description
@@ -51,9 +52,6 @@ class MainActivity : ComponentActivity() {
                     reports = reports,
                     onOpenCreateReport = {
                         createReportLauncher.launch(Intent(this, TrafficReportActivity::class.java))
-                    },
-                    onOpenFragmentFlow = {
-                        startActivity(Intent(this, FragmentHostActivity::class.java))
                     },
                     onAddReport = { report ->
                         viewModel.addReport(report)

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.MaterialTheme
@@ -43,7 +44,6 @@ import java.util.Locale
 fun MainScreen(
     reports: List<TrafficReport>,
     onOpenCreateReport: () -> Unit,
-    onOpenFragmentFlow: () -> Unit,
     onAddReport: (TrafficReport) -> Unit,
     onRemoveReport: (Int) -> Unit
 ) {
@@ -89,6 +89,7 @@ fun MainScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -175,13 +176,6 @@ fun MainScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.open_traffic_report_screen))
-        }
-
-        OutlinedButton(
-            onClick = onOpenFragmentFlow,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(stringResource(R.string.open_fragment_flow))
         }
 
         Text(
