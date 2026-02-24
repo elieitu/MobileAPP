@@ -9,6 +9,7 @@
     <string name="report_type_label">Report type</string>
     <string name="report_description_label">Description</string>
     <string name="open_traffic_report_screen">Open traffic report screen</string>
+    <string name="open_fragment_flow">Open fragment flow</string>
 
     <!-- Create report screen -->
     <string name="create_traffic_report">Create traffic report</string>
