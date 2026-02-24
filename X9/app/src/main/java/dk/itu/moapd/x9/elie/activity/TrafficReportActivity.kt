@@ -89,7 +89,7 @@ class TrafficReportActivity : AppCompatActivity() {
 
             if (!valid) {
                 Log.w(TAG, "Invalid submission: typeEmpty=${type.isEmpty()}, dateEmpty=${date.isEmpty()}, descEmpty=${description.isEmpty()}, severityEmpty=${severity.isEmpty()}")
-                Toast.makeText(this, "Invalid submission: udfyld alle felter", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Invalid submission: Fill everything", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

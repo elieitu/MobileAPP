@@ -4,12 +4,19 @@ import android.app.DatePickerDialog
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.MaterialTheme
@@ -57,6 +64,7 @@ fun MainScreen(
     var description by rememberSaveable { mutableStateOf("") }
     var typeExpanded by remember { mutableStateOf(false) }
     var selectedSeverityFilter by rememberSaveable { mutableStateOf("All") }
+    var dateFieldSize by remember { mutableStateOf(IntSize.Zero) }
 
     val filteredReports by remember(reports, selectedSeverityFilter) {
         derivedStateOf {
@@ -113,24 +121,37 @@ fun MainScreen(
             modifier = Modifier.fillMaxWidth()
         )
 
-        OutlinedTextField(
-            value = date,
-            onValueChange = {},
-            readOnly = true,
-            label = { Text(stringResource(R.string.report_date_label)) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable {
-                    val cal = Calendar.getInstance()
-                    DatePickerDialog(
-                        context,
-                        { _, y, m, d -> date = String.format(Locale.US, "%04d-%02d-%02d", y, m + 1, d) },
-                        cal.get(Calendar.YEAR),
-                        cal.get(Calendar.MONTH),
-                        cal.get(Calendar.DAY_OF_MONTH)
-                    ).show()
-                }
-        )
+        Box(modifier = Modifier.fillMaxWidth()) {
+            OutlinedTextField(
+                value = date,
+                onValueChange = {},
+                readOnly = true,
+                label = { Text(stringResource(R.string.report_date_label)) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onSizeChanged { dateFieldSize = it }
+            )
+
+            val density = LocalDensity.current
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .size(
+                        width = with(density) { dateFieldSize.width.toDp() },
+                        height = with(density) { dateFieldSize.height.toDp() }
+                    )
+                    .clickable {
+                        val cal = Calendar.getInstance()
+                        DatePickerDialog(
+                            context,
+                            { _, y, m, d -> date = String.format(Locale.US, "%04d-%02d-%02d", y, m + 1, d) },
+                            cal.get(Calendar.YEAR),
+                            cal.get(Calendar.MONTH),
+                            cal.get(Calendar.DAY_OF_MONTH)
+                        ).show()
+                    }
+            )
+        }
 
         ExposedDropdownMenuBox(
             expanded = typeExpanded,
