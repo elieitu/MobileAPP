@@ -16,6 +16,9 @@
         <activity
             android:name="dk.itu.moapd.x9.elie.activity.TrafficReportActivity"
             android:exported="false" />
+        <activity
+            android:name="dk.itu.moapd.x9.elie.activity.FragmentHostActivity"
+            android:exported="false" />
 
         <activity
             android:name="dk.itu.moapd.x9.elie.activity.MainActivity"

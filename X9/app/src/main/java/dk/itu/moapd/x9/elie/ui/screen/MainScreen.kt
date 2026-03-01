@@ -1,6 +1,7 @@
 package dk.itu.moapd.x9.elie.ui.screen
 
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntSize
@@ -40,6 +40,7 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.google.android.material.color.MaterialColors
 import dk.itu.moapd.x9.elie.R
 import dk.itu.moapd.x9.elie.model.TrafficReport
 import dk.itu.moapd.x9.elie.ui.component.TrafficReportList
@@ -90,6 +91,12 @@ fun MainScreen(
                 description = description.trim()
             )
         )
+
+        title = ""
+        location = ""
+        date = ""
+        type = ""
+        description = ""
 
         Toast.makeText(context, "Saved: $severity", Toast.LENGTH_SHORT).show()
     }
@@ -142,13 +149,24 @@ fun MainScreen(
                     )
                     .clickable {
                         val cal = Calendar.getInstance()
-                        DatePickerDialog(
+                        val picker = DatePickerDialog(
                             context,
                             { _, y, m, d -> date = String.format(Locale.US, "%04d-%02d-%02d", y, m + 1, d) },
                             cal.get(Calendar.YEAR),
                             cal.get(Calendar.MONTH),
                             cal.get(Calendar.DAY_OF_MONTH)
-                        ).show()
+                        )
+                        picker.show()
+
+                        val actionColor = MaterialColors.getColor(
+                            context,
+                            androidx.appcompat.R.attr.colorPrimary,
+                            0
+                        )
+                        if (actionColor != 0) {
+                            picker.getButton(DialogInterface.BUTTON_POSITIVE)?.setTextColor(actionColor)
+                            picker.getButton(DialogInterface.BUTTON_NEGATIVE)?.setTextColor(actionColor)
+                        }
                     }
             )
         }

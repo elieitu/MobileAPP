@@ -2,8 +2,10 @@ package dk.itu.moapd.x9.elie.util
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.view.MotionEvent
 import android.widget.ArrayAdapter
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Calendar
@@ -22,7 +24,7 @@ object UiPickers {
     ) {
         fun showPicker() {
             val cal = Calendar.getInstance()
-            DatePickerDialog(
+            val picker = DatePickerDialog(
                 context,
                 { _, y, m, d ->
                     input.setText(format(y, m, d))
@@ -31,7 +33,15 @@ object UiPickers {
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            )
+            picker.show()
+
+            val actionColor = MaterialColors.getColor(
+                input,
+                androidx.appcompat.R.attr.colorPrimary
+            )
+            picker.getButton(DialogInterface.BUTTON_POSITIVE)?.setTextColor(actionColor)
+            picker.getButton(DialogInterface.BUTTON_NEGATIVE)?.setTextColor(actionColor)
         }
 
         input.isFocusable = false
