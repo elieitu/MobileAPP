@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="dk.itu.moapd.x9.elie.ui.MainFragment"
+        android:label="@string/app_name">
+        <action
+            android:id="@+id/action_mainFragment_to_createReportFragment"
+            app:destination="@id/createReportFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_composeDashboardFragment"
+            app:destination="@id/composeDashboardFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createReportFragment"
+        android:name="dk.itu.moapd.x9.elie.ui.CreateReportFragment"
+        android:label="@string/create_traffic_report" />
+
+    <fragment
+        android:id="@+id/composeDashboardFragment"
+        android:name="dk.itu.moapd.x9.elie.ui.ComposeDashboardFragment"
+        android:label="@string/compose_dashboard">
+        <action
+            android:id="@+id/action_composeDashboardFragment_to_createReportFragment"
+            app:destination="@id/createReportFragment" />
+    </fragment>
+</navigation>

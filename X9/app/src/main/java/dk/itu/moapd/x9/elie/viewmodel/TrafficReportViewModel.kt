@@ -18,30 +18,8 @@ class TrafficReportViewModel : ViewModel() {
     fun removeAt(index: Int) {
         val current = _reports.value ?: return
         if (index !in current.indices) return
-        _reports.value = current.toMutableList().also { it.removeAt(index) }
-    }
-
-    fun addMockDataIfEmpty() {
-        val current = _reports.value ?: emptyList()
-        if (current.isNotEmpty()) return
-
-        _reports.value = listOf(
-            TrafficReport(
-                title = "Speed camera",
-                location = "Ringsted",
-                date = "2026-02-21",
-                type = "Camera",
-                severity = "Minor",
-                description = "Near the intersection"
-            ),
-            TrafficReport(
-                title = "Heavy traffic",
-                location = "Skovlunde",
-                date = "2026-02-21",
-                type = "Traffic",
-                severity = "Moderate",
-                description = "Slow moving cars"
-            )
-        )
+        val updated = current.toMutableList()
+        updated.removeAt(index)
+        _reports.value = updated
     }
 }

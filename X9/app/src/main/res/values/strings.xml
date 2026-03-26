@@ -9,12 +9,39 @@
     <string name="report_type_label">Report type</string>
     <string name="report_description_label">Description</string>
     <string name="open_traffic_report_screen">Open traffic report screen</string>
+    <string name="open_compose_dashboard">Open Compose dashboard</string>
+    <string name="compose_dashboard">Compose dashboard</string>
+    <string name="compose_dashboard_title">Traffic dashboard</string>
+    <string name="compose_dashboard_summary">This dashboard is part of the same X9 flow and gives a quick overview of shared reports.</string>
+    <string name="open_create_report">Open create report</string>
+    <string name="report_details">Report details</string>
+    <string name="reports_heading">Reports</string>
+    <string name="filter_all">All</string>
+    <string name="showing_reports">Showing %1$d of %2$d</string>
+    <string name="delete">Delete</string>
+    <string name="total_reports_label">Total reports</string>
+    <string name="latest_report_label">Latest type</string>
+    <string name="active_filters_label">Dashboard filters</string>
+    <string name="no_reports_label">No reports yet</string>
+    <string name="report_meta_summary">%1$s | %2$s | %3$s</string>
+    <string name="report_meta_details">%1$s | %2$s | %3$s | %4$s</string>
 
     <!-- Create report screen -->
     <string name="create_traffic_report">Create traffic report</string>
     <string name="back">Back</string>
     <string name="report_severity_label">Report severity</string>
     <string name="submit">Submit</string>
+    <string name="required">Required</string>
+    <string name="fill_all_fields">Fill all fields</string>
+    <string name="invalid_submission_fill_everything">Invalid submission: fill everything</string>
+    <string name="saved_severity_message">Saved: %1$s</string>
+    <string name="report_received_message">Report received: %1$s</string>
+    <string name="traffic_report_created">Traffic report created</string>
+    <string name="fragment_report_title">Fragment report</string>
+    <string name="fragment_report_location">Fragment screen</string>
+    <string name="fragment_report_date">Created from fragment form</string>
+    <string name="report_title_placeholder">Report title</string>
+    <string name="report_meta_placeholder">Location | Date | Type | Severity</string>
 
     <!-- Severity buttons -->
     <string name="severity_minor">Minor</string>
