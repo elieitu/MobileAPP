@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "143105256736",
+    "project_id": "my-awesome-appx9-53b28",
+    "storage_bucket": "my-awesome-appx9-53b28.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143105256736:android:1a99b16136483758403b45",
+        "android_client_info": {
+          "package_name": "dk.itu.moapd.x9.elie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6cs994cKGRkT6SlAWY9Fd0O1j-IY9KE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,2 @@
+DATABASE_URL=https://my-awesome-appx9-53b28-default-rtdb.europe-west1.firebasedatabase.app
+BUCKET_URL=gs://my-awesome-appx9-53b28.firebasestorage.app

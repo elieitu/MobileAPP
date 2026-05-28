@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "143105256736",
+    "firebase_url": "https://my-awesome-appx9-53b28-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "my-awesome-appx9-53b28",
+    "storage_bucket": "my-awesome-appx9-53b28.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143105256736:android:3f8f8aaf7e3bdf91403b45",
+        "android_client_info": {
+          "package_name": "dk.itu.moapd.firebasestorage.elie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6cs994cKGRkT6SlAWY9Fd0O1j-IY9KE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143105256736:android:7ffb632a59f5488c403b45",
+        "android_client_info": {
+          "package_name": "dk.itu.moapd.mlkit.elie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6cs994cKGRkT6SlAWY9Fd0O1j-IY9KE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143105256736:android:1a99b16136483758403b45",
+        "android_client_info": {
+          "package_name": "dk.itu.moapd.x9.elie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi6cs994cKGRkT6SlAWY9Fd0O1j-IY9KE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
