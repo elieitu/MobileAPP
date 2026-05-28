@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_mainFragment_to_composeDashboardFragment"
             app:destination="@id/composeDashboardFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
 
     <fragment
@@ -29,4 +32,9 @@
             android:id="@+id/action_composeDashboardFragment_to_createReportFragment"
             app:destination="@id/createReportFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="dk.itu.moapd.x9.elie.ui.MapFragment"
+        android:label="@string/open_map" />
 </navigation>

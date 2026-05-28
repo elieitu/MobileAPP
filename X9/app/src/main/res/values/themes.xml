@@ -4,4 +4,11 @@
     </style>
 
     <style name="Theme.X9" parent="Base.Theme.X9" />
+
+    <style name="Theme_X9_Auth" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">#6750A4</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#1C1B1F</item>
+        <item name="android:statusBarColor">#6750A4</item>
+    </style>
 </resources>

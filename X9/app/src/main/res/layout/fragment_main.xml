@@ -23,6 +23,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSignOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/button_sign_out"
+            app:layout_constraintBottom_toBottomOf="@id/appTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/appTitle" />
+
+        <TextView
+            android:id="@+id/textAuthStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:text="@string/auth_status_signed_out"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_body"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appTitle" />
+
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/sign_in"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAuthStatus" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/reportTitleLayout"
             android:layout_width="0dp"
@@ -32,7 +66,7 @@
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appTitle"
+            app:layout_constraintTop_toBottomOf="@id/buttonSignIn"
             app:startIconDrawable="@android:drawable/ic_menu_compass">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -136,6 +170,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnOpenReport" />
 
+        <Button
+            android:id="@+id/btnOpenMap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/open_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnOpenComposeDashboard" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/severityRow"
             android:layout_width="0dp"
@@ -144,7 +188,7 @@
             android:layout_marginBottom="@dimen/spacing_medium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnOpenComposeDashboard">
+            app:layout_constraintTop_toBottomOf="@id/btnOpenMap">
 
             <Button
                 android:id="@+id/buttonMinor"
@@ -193,6 +237,12 @@
             app:layout_constraintTop_toBottomOf="@id/severityRow"
             tools:itemCount="2"
             tools:listitem="@layout/row_item_report" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/signedInContentGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="buttonSignOut,reportTitleLayout,reportLocationLayout,reportDateLayout,reportTypeLayout,reportDescriptionLayout,btnOpenReport,btnOpenComposeDashboard,btnOpenMap,severityRow,recycler_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

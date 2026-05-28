@@ -103,6 +103,43 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xsmall" />
 
+        <TextView
+            android:id="@+id/reportImageLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/report_image_label"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:id="@+id/reportImageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="@dimen/spacing_xsmall">
+
+            <ImageView
+                android:id="@+id/reportImageValue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/report_image_preview"
+                android:scaleType="centerCrop" />
+
+            <ProgressBar
+                android:id="@+id/reportImageProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/reportImageStatusValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            android:text="@string/report_image_not_available" />
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
